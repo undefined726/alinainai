@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+
+    <!-- 上下文名称 -->
+    <contextName>logback</contextName>
+
+    <!-- 日志存放位置 -->
+    <property name="log.path" value="D:\\log\\ali\\logback.log" />
+
+    <!-- 输出到控制台（控制台输出策略） -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+             <level>ERROR</level>
+         </filter>-->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 输出到文件（文件输出策略） -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每天的日志归档 -->
+            <fileNamePattern>logback.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 只保留最近15天的日志 -->
+            <maxHistory>15</maxHistory>
+            <!-- 指定日志文件的上限大小，到了这个值就会删除旧的日志 -->
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 指定最基础的日志输出级别 -->
+    <root level="info">
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+    </root>
+
+    <!-- additivity没有指定则默认为true，向上(root)传递 -->
+    <!--<logger name="com.dudu.controller"/>-->
+
+    <!-- additivity指定是否向上级(root)传递 -->
+    <logger name="com.ali.nainai" level="debug" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+</configuration>
