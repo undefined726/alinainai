@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-danger block full-width m-b">登 录</button>
-                <#--<p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
+                <#--<p class="text-muted text-center"> <a href="login2.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
                 </p>-->
             </form>
         </div>
