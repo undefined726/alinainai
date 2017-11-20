@@ -47,11 +47,10 @@ public class BlogServiceImpl implements BlogService {
 	}
 
 	@Override
-	public Page<Blog> findByCategoryANDPrivacy(Long categoryId, int privacy,
-			Pageable pageable) {
+	public Page<Blog> findByCategoryANDPrivacy(Long categoryId, int privacy, Pageable pageable) {
 		Category category = new Category();
 		category.setId(categoryId);
-		return blogRepository.findByCategoryAndPrivacy(category ,privacy,pageable);
+		return blogRepository.findByCategoryAndPrivacyOrderByCreateAtDesc(category ,privacy,pageable);
 	}
 
 	@Override
@@ -71,7 +70,6 @@ public class BlogServiceImpl implements BlogService {
 		if(blog == null){
 			throw new ServiceException("操作对象不能为空");
 		}
-		
 		if(blog.getId() != null){
 			Blog dbBlog = findById(blog.getId());
 			dbBlog.setTitle(blog.getTitle());
