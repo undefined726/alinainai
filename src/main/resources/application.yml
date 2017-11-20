@@ -18,7 +18,7 @@ lucene:
 mybatis:
   type-aliases-package: com.ali.nainai.entity
 
-# Spring配置（包括数据源，jpa, freemarker的配置）
+# Spring配置（包括数据源，jpa, freemarker, thymeleaf的配置）
 spring:
   datasource:
     url: "jdbc:mysql://localhost:3306/SPPanBlog?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull"
@@ -56,6 +56,13 @@ spring:
       time_format: "HH:mm:ss"
       datetime_format: "yyyy-MM-dd HH:mm:ss"
 
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    encoding: utf-8
+    content-type: text/html
+    suffix: .html
+    mode: HTML5
 
 
 
