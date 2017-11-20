@@ -23,11 +23,8 @@ public class SearchController {
 	private SearcherKit searcherKit;
 
 	@RequestMapping("/s")
-	public String index(
-			@RequestParam String keyword,
-			@RequestParam(required = false,defaultValue="1") Integer p,
-			ModelMap map 
-			){
+	public String index(@RequestParam String keyword,
+			@RequestParam(required = false,defaultValue="1") Integer p, ModelMap map){
 		if(StrKit.isBlank(keyword)){
 			return "redirect:/";
 		}

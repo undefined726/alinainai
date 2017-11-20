@@ -20,11 +20,8 @@ public class TagController {
 	private BlogService blogService;
 
 	@RequestMapping("/t/{tagName}")
-	public String index(
-			@PathVariable String tagName,
-			@RequestParam(required = false,defaultValue="1") Integer p,
-			ModelMap map 
-			){
+	public String index(@PathVariable String tagName,
+			@RequestParam(required = false,defaultValue="1") Integer p, ModelMap map){
 		map.put("tagName", tagName);
 		PageRequest pageRequest = new PageRequest(p - 1, 5);
 		Page<Blog> page = blogService.findByTagName(tagName, pageRequest);
