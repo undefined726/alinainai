@@ -29,7 +29,7 @@ public interface BlogRepository extends JpaRepository<Blog, Long> {
 	 * @param pageable
 	 * @return
 	 */
-	Page<Blog> findByCategoryAndPrivacy(Category category, int privacy, Pageable pageable);
+	Page<Blog> findByCategoryAndPrivacyOrderByCreateAtDesc(Category category, int privacy, Pageable pageable);
 
 	/**
 	 * 根据浏览数量获取博客
