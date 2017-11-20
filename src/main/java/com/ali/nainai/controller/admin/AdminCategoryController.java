@@ -39,9 +39,7 @@ public class AdminCategoryController extends BaseController {
 	}
 
 	@GetMapping("/form")
-	public String form(@RequestParam(required=false) Long id,
-			ModelMap map
-			){
+	public String form(@RequestParam(required=false) Long id, ModelMap map){
 		if(id != null){
 			Category category = categoryService.findById(id);
 			map.put("category", category);
@@ -63,9 +61,7 @@ public class AdminCategoryController extends BaseController {
 	
 	@PostMapping("/{id}/del")
 	@ResponseBody
-	public JsonResult delete(
-			@PathVariable Long id
-			){
+	public JsonResult delete(@PathVariable Long id){
 		try {
 			categoryService.delete(id);
 		} catch (Exception e) {

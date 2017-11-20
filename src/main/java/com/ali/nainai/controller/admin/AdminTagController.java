@@ -40,9 +40,7 @@ public class AdminTagController extends BaseController {
 	}
 
 	@GetMapping("/form")
-	public String form(@RequestParam(required=false) Long id,
-			ModelMap map
-			){
+	public String form(@RequestParam(required=false) Long id, ModelMap map){
 		if(id != null){
 			Tag tag = tagService.findById(id);
 			map.put("tag", tag);
@@ -64,9 +62,7 @@ public class AdminTagController extends BaseController {
 	
 	@PostMapping("/{id}/del")
 	@ResponseBody
-	public JsonResult delete(
-			@PathVariable Long id
-			){
+	public JsonResult delete(@PathVariable Long id){
 		try {
 			tagService.delete(id);
 		} catch (Exception e) {

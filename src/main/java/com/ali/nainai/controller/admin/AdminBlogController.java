@@ -46,9 +46,7 @@ public class AdminBlogController extends BaseController{
 	}
 	
 	@GetMapping("/form")
-	public String form(@RequestParam(required=false) Long id,
-			ModelMap map
-			){
+	public String form(@RequestParam(required=false) Long id, ModelMap map){
 		List<Category> categories = categoryService.findVisible();
 		map.put("categories", categories);
 		
@@ -65,11 +63,11 @@ public class AdminBlogController extends BaseController{
 		try {
 			blog.setAuthor(getLoginUser());
 			blogService.saveOrUpdate(blog);
+			return JsonResult.ok();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.fail(e.getMessage());
 		}
-		return JsonResult.ok();
 	}
 	
 	@PostMapping("/{id}/change")
@@ -77,24 +75,22 @@ public class AdminBlogController extends BaseController{
 	public JsonResult change(@PathVariable Long id,String type){
 		try {
 			blogService.change(id,type);
+			return JsonResult.ok();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.fail(e.getMessage());
 		}
-		return JsonResult.ok();
 	}
 	
 	@PostMapping("/{id}/del")
 	@ResponseBody
-	public JsonResult delete(
-			@PathVariable Long id
-			){
+	public JsonResult delete(@PathVariable Long id){
 		try {
 			blogService.delete(id);
+			return JsonResult.ok();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.fail(e.getMessage());
 		}
-		return JsonResult.ok();
 	}
 }
